@@ -1,9 +1,15 @@
 <h1>Sign Up</h1>
 <div>
-<%= form_for(@user) do |f| %>
+<%= form_for(:users, url: users_path ) do |f| %>
+<br>
 <%= f.label :email %>
+<br>
 <%= f.text_field :email %>
+<br>
 <%= f.label :name %>
+<br>
 <%= f.text_field :name %>
+<br>
+<%= f.submit "Sign Up" %>
 <% end %>
 </div>

@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 		if @user.save
 			render :new
 		else
+			#send email
 			redirect_to :index
 		end
 	end
