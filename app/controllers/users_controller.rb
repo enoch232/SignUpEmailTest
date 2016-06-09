@@ -5,10 +5,12 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_params)
 		if @user.save
-			render :new
-		else
 			#send email
-			redirect_to :index
+			UserSignUpMailer.user_sign_up(@user).deliver
+			redirect_to users_path
+		else
+			
+			render :new
 		end
 	end
 	def index
@@ -16,6 +18,6 @@ class UsersController < ApplicationController
 	end
 	private
 	def user_params
-		params.require(:user).permit(:name, :email)
+		params.require(:users).permit(:name, :email)
 	end
 end
